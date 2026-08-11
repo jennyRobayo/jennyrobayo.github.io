@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal website of Jenny Robayo — Industrial Engineer, MBA student, traveler, photographer, and hiking enthusiast." />
+  <title>Jenny Robayo | Engineer • MBA • Explorer</title>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-soft:#0d1b2a;
+      --card:rgba(255,255,255,.075);
+      --card-strong:rgba(255,255,255,.12);
+      --text:#f8fbff;
+      --muted:#b9c7d8;
+      --yellow:#ffd447;
+      --blue:#4ea5ff;
+      --red:#ff5f6d;
+      --green:#64d6a0;
+      --line:rgba(255,255,255,.14);
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(78,165,255,.18), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(255,212,71,.12), transparent 25%),
+        radial-gradient(circle at 80% 85%, rgba(100,214,160,.12), transparent 28%),
+        linear-gradient(180deg,#07111f 0%, #081521 46%, #07111f 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 85%);
+      z-index:-1;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+
+    .container{width:min(1180px, calc(100% - 40px));margin:auto}
+
+    .nav{
+      position:fixed;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      width:min(1120px, calc(100% - 28px));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 14px 12px 18px;
+      border:1px solid var(--line);
+      background:rgba(7,17,31,.66);
+      backdrop-filter:blur(18px);
+      border-radius:999px;
+      z-index:20;
+      box-shadow:0 10px 35px rgba(0,0,0,.18);
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.02em;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .brand-mark{
+      width:34px;height:34px;border-radius:50%;
+      display:grid;place-items:center;
+      background:conic-gradient(var(--yellow),var(--blue),var(--red),var(--yellow));
+      color:#06101a;
+      font-weight:900;
+      box-shadow:0 0 0 4px rgba(255,255,255,.06);
+    }
+
+    .nav-links{display:flex;gap:6px;align-items:center}
+    .nav-links a{
+      padding:10px 14px;
+      color:var(--muted);
+      border-radius:999px;
+      font-size:.94rem;
+      transition:.25s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.08);color:white}
+    .nav-cta{background:white!important;color:#07111f!important;font-weight:750}
+
+    .hero{
+      min-height:100vh;
+      padding:150px 0 80px;
+      display:grid;
+      align-items:center;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:62px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:9px;
+      align-items:center;
+      padding:9px 13px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+      border-radius:999px;
+      color:#dbe7f5;
+      font-size:.9rem;
+      margin-bottom:26px;
+    }
+
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 0 6px rgba(100,214,160,.12);
+    }
+
+    h1{
+      font-size:clamp(3.4rem,8vw,7.7rem);
+      line-height:.88;
+      letter-spacing:-.075em;
+      margin:0;
+      max-width:850px;
+    }
+
+    .gradient-text{
+      background:linear-gradient(90deg,#fff 10%, #bcdcff 38%, #ffe39a 70%, #fff 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-copy{
+      font-size:clamp(1.06rem,1.8vw,1.34rem);
+      line-height:1.7;
+      max-width:720px;
+      color:var(--muted);
+      margin:30px 0 34px;
+    }
+
+    .hero-copy strong{color:white;font-weight:700}
+
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 20px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      transition:.28s ease;
+      font-weight:750;
+    }
+    .btn.primary{background:white;color:#07111f;border-color:white}
+    .btn.secondary{background:rgba(255,255,255,.05)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+
+    .hero-art{
+      position:relative;
+      min-height:610px;
+      display:grid;
+      place-items:center;
+    }
+
+    .orbit{
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.11);
+      animation:spin 24s linear infinite;
+    }
+    .orbit::before,.orbit::after{
+      content:"";
+      position:absolute;
+      width:13px;height:13px;border-radius:50%;
+      background:var(--yellow);
+      box-shadow:0 0 22px rgba(255,212,71,.8);
+    }
+    .orbit::before{top:30px;left:105px}
+    .orbit::after{bottom:38px;right:100px;background:var(--blue)}
+
+    .portrait-card{
+      width:min(100%,420px);
+      aspect-ratio:.78;
+      position:relative;
+      border-radius:42px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.17);
+      background:
+        linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.025)),
+        radial-gradient(circle at 35% 25%, rgba(255,212,71,.4), transparent 20%),
+        radial-gradient(circle at 72% 18%, rgba(78,165,255,.42), transparent 25%),
+        linear-gradient(160deg,#18344b,#0b1d2b 62%,#11291e);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+
+    .portrait-card::before{
+      content:"";
+      position:absolute;
+      width:320px;height:320px;border-radius:44% 56% 58% 42%;
+      background:linear-gradient(145deg,rgba(100,214,160,.55),rgba(78,165,255,.18));
+      bottom:-80px;left:-95px;
+      filter:blur(1px);
+      transform:rotate(18deg);
+    }
+
+    .portrait-card::after{
+      content:"JR";
+      position:absolute;
+      inset:auto 0 70px 0;
+      text-align:center;
+      font-size:9rem;
+      letter-spacing:-.08em;
+      font-weight:900;
+      color:rgba(255,255,255,.92);
+      z-index:1;
+      text-shadow:0 18px 60px rgba(0,0,0,.28);
+    }
+
+    .card-label{
+      position:absolute;
+      z-index:2;
+      left:24px;right:24px;bottom:24px;
+      padding:18px 20px;
+      border-radius:20px;
+      background:rgba(7,17,31,.65);
+      border:1px solid rgba(255,255,255,.15);
+      backdrop-filter:blur(14px);
+    }
+
+    .card-label span{
+      display:block;color:var(--muted);font-size:.9rem;margin-top:4px
+    }
+
+    .float-chip{
+      position:absolute;
+      z-index:3;
+      padding:12px 14px;
+      background:rgba(11,27,42,.76);
+      border:1px solid var(--line);
+      border-radius:18px;
+      backdrop-filter:blur(14px);
+      box-shadow:0 15px 40px rgba(0,0,0,.22);
+      font-weight:700;
+      animation:float 5s ease-in-out infinite;
+    }
+    .chip-1{top:68px;right:-18px}
+    .chip-2{bottom:105px;left:-34px;animation-delay:-1.7s}
+
+    section{padding:105px 0}
+
+    .section-top{
+      display:flex;
+      gap:28px;
+      align-items:end;
+      justify-content:space-between;
+      margin-bottom:42px;
+    }
+
+    .kicker{
+      color:var(--yellow);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:850;
+    }
+
+    h2{
+      margin:8px 0 0;
+      font-size:clamp(2.3rem,5vw,4.4rem);
+      letter-spacing:-.055em;
+      line-height:1;
+    }
+
+    .section-intro{
+      max-width:520px;
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:22px;
+    }
+
+    .glass{
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+      border-radius:var(--radius);
+      box-shadow:0 18px 50px rgba(0,0,0,.16);
+    }
+
+    .about-card{padding:36px}
+    .about-card p{
+      font-size:1.14rem;
+      color:#d4dfeb;
+      line-height:1.85;
+      margin:0;
+    }
+
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fact{
+      padding:24px;
+      min-height:150px;
+      position:relative;
+      overflow:hidden;
+    }
+    .fact .icon{font-size:1.65rem;margin-bottom:30px}
+    .fact strong{display:block;font-size:1.2rem}
+    .fact span{display:block;color:var(--muted);margin-top:5px;font-size:.92rem}
+
+    .journey{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .journey-card{
+      padding:30px;
+      min-height:290px;
+      position:relative;
+      overflow:hidden;
+    }
+    .journey-card .num{
+      font-size:.8rem;
+      color:var(--muted);
+      font-weight:800;
+      letter-spacing:.14em;
+    }
+    .journey-card h3{
+      font-size:1.7rem;
+      margin:60px 0 12px;
+      letter-spacing:-.035em;
+    }
+    .journey-card p{color:var(--muted);line-height:1.65;margin:0}
+    .journey-card::after{
+      content:"";
+      position:absolute;
+      width:120px;height:120px;border-radius:50%;
+      right:-35px;top:-35px;
+      background:var(--accent,rgba(255,255,255,.12));
+      filter:blur(8px);
+      opacity:.8;
+    }
+
+    .passions-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .9fr;
+      gap:18px;
+    }
+
+    .passion{
+      min-height:430px;
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      isolation:isolate;
+      transition:.3s ease;
+    }
+    .passion:hover{transform:translateY(-6px)}
+    .passion::before{
+      content:"";
+      position:absolute;inset:0;z-index:-2;
+      background:var(--visual);
+    }
+    .passion::after{
+      content:"";
+      position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(to top,rgba(3,10,17,.94),rgba(3,10,17,.08) 66%);
+    }
+    .travel{--visual:
+      radial-gradient(circle at 78% 18%,rgba(255,212,71,.72),transparent 14%),
+      linear-gradient(145deg,#174f68 0 45%,#d2a94b 46% 50%,#14394e 51% 100%)}
+    .photo{--visual:
+      radial-gradient(circle at 54% 44%,transparent 0 16%,#0c1722 17% 21%,transparent 22%),
+      radial-gradient(circle at 54% 44%,rgba(78,165,255,.9),transparent 8%),
+      linear-gradient(135deg,#291b3a,#145a72 48%,#d3806f)}
+    .hike{--visual:
+      linear-gradient(155deg,transparent 0 48%,#173d31 49% 65%,#0f2d28 66%),
+      linear-gradient(25deg,#0e2631,#476f68)}
+    .passion-tag{
+      width:max-content;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.18);
+      backdrop-filter:blur(10px);
+      font-size:.8rem;
+      font-weight:800;
+    }
+    .passion h3{font-size:2rem;letter-spacing:-.04em;margin:14px 0 8px}
+    .passion p{color:#d2dce7;line-height:1.55;margin:0}
+
+    .quote{
+      padding:62px 40px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .quote p{
+      max-width:900px;
+      margin:0 auto;
+      font-size:clamp(1.7rem,4vw,3.4rem);
+      line-height:1.2;
+      letter-spacing:-.045em;
+      font-weight:750;
+    }
+    .quote small{display:block;margin-top:18px;color:var(--muted)}
+    .quote::before{
+      content:"“";
+      position:absolute;
+      left:30px;top:-75px;
+      font-size:18rem;
+      color:rgba(255,255,255,.035);
+      font-family:Georgia,serif;
+    }
+
+    .contact-wrap{
+      padding:54px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:28px;
+      align-items:center;
+      background:
+        radial-gradient(circle at 95% 20%,rgba(255,212,71,.18),transparent 26%),
+        radial-gradient(circle at 20% 90%,rgba(78,165,255,.16),transparent 28%),
+        linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
+    }
+    .contact-wrap p{color:var(--muted);line-height:1.7;max-width:650px}
+    .contact-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .badge{
+      padding:9px 12px;border:1px solid var(--line);border-radius:999px;
+      color:#d9e5f2;font-size:.88rem
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:#8fa2b7;
+      font-size:.9rem;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible{opacity:1;transform:none}
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes float{50%{transform:translateY(-10px)}}
+
+    @media(max-width:900px){
+      .nav-links a:not(.nav-cta){display:none}
+      .hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}
+      .hero-art{min-height:530px}
+      .journey{grid-template-columns:1fr}
+      .passions-grid{grid-template-columns:1fr}
+      .passion{min-height:340px}
+      .contact-wrap{padding:34px}
+    }
+
+    @media(max-width:600px){
+      .container{width:min(100% - 26px,1180px)}
+      .nav{top:10px}
+      .hero{padding-top:120px}
+      .hero-grid{gap:36px}
+      .hero-art{min-height:430px}
+      .portrait-card{width:300px}
+      .orbit{width:350px;height:350px}
+      .float-chip{font-size:.82rem}
+      .chip-1{right:0}
+      .chip-2{left:0;bottom:65px}
+      .section-top{display:block}
+      .section-intro{margin-top:18px}
+      .facts{grid-template-columns:1fr}
+      section{padding:78px 0}
+      .about-card{padding:27px}
+      .quote{padding:45px 24px}
+      footer{flex-direction:column}
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <a href="#home" class="brand">
+      <span class="brand-mark">J</span>
+      Jenny Robayo
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#passions">Passions</a>
+      <a href="#contact" class="nav-cta">Connect</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow reveal"><span class="dot"></span> Colombian roots • Global mindset</div>
+          <h1 class="reveal">
+            Jenny<br>
+            <span class="gradient-text">Robayo.</span>
+          </h1>
+          <p class="hero-copy reveal">
+            I’m an <strong>Industrial Engineer from Colombia</strong>, currently pursuing an
+            <strong>MBA in the United States</strong>. I’m energized by ideas, people, new perspectives,
+            and the kind of experiences that happen beyond the familiar.
+          </p>
+          <div class="actions reveal">
+            <a class="btn primary" href="#about">Discover my story ↓</a>
+            <a class="btn secondary" href="#passions">Explore my passions ✦</a>
+          </div>
+        </div>
+
+        <div class="hero-art reveal" aria-label="Creative monogram illustration for Jenny Robayo">
+          <div class="orbit"></div>
+          <div class="portrait-card">
+            <div class="card-label">
+              <strong>Engineer by training. Explorer by nature.</strong>
+              <span>Colombia → United States → Wherever curiosity leads next.</span>
+            </div>
+          </div>
+          <div class="float-chip chip-1">📷 Visual storyteller</div>
+          <div class="float-chip chip-2">🥾 Always chasing the next trail</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="kicker">About me</div>
+            <h2>Where logic meets curiosity.</h2>
+          </div>
+          <p class="section-intro">
+            My story lives at the intersection of structured thinking and discovery —
+            solving problems professionally while staying open to the world personally.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="glass about-card reveal">
+            <p>
+              I was born and raised in <strong>Colombia</strong>, a country that shaped my warmth,
+              resilience, and appreciation for vibrant cultures. As an <strong>Industrial Engineer</strong>,
+              I learned to understand systems, improve processes, and turn complexity into practical solutions.
+              Today, while pursuing my <strong>Master of Business Administration in the United States</strong>,
+              I’m expanding that analytical foundation with strategy, leadership, and a more global business perspective.
+            </p>
+          </article>
+
+          <div class="facts">
+            <div class="glass fact reveal">
+              <div class="icon">🇨🇴</div>
+              <strong>Colombia</strong>
+              <span>My roots, culture, and first inspiration.</span>
+            </div>
+            <div class="glass fact reveal">
+              <div class="icon">⚙️</div>
+              <strong>Industrial Engineer</strong>
+              <span>Systems thinking, improvement, and problem-solving.</span>
+            </div>
+            <div class="glass fact reveal">
+              <div class="icon">🎓</div>
+              <strong>MBA Student</strong>
+              <span>Building a broader leadership and business perspective.</span>
+            </div>
+            <div class="glass fact reveal">
+              <div class="icon">🌎</div>
+              <strong>Global Outlook</strong>
+              <span>Curious about people, places, and possibilities.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="kicker">My journey</div>
+            <h2>Built in chapters.</h2>
+          </div>
+          <p class="section-intro">
+            Each stage has added a different lens: technical thinking, international growth,
+            and a stronger understanding of how people and organizations create change.
+          </p>
+        </div>
+
+        <div class="journey">
+          <article class="glass journey-card reveal" style="--accent:rgba(255,212,71,.35)">
+            <div class="num">01 / FOUNDATION</div>
+            <h3>Engineering mindset</h3>
+            <p>
+              Industrial engineering taught me to analyze, optimize, and connect the details
+              to the bigger picture — a mindset I carry into every challenge.
+            </p>
+          </article>
+
+          <article class="glass journey-card reveal" style="--accent:rgba(78,165,255,.35)">
+            <div class="num">02 / EVOLUTION</div>
+            <h3>Business perspective</h3>
+            <p>
+              My MBA journey is helping me combine analytical thinking with leadership,
+              strategy, communication, and decision-making.
+            </p>
+          </article>
+
+          <article class="glass journey-card reveal" style="--accent:rgba(100,214,160,.35)">
+            <div class="num">03 / NEXT</div>
+            <h3>Global possibilities</h3>
+            <p>
+              I’m interested in opportunities where business, transformation, people,
+              technology, and meaningful impact can come together.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="passions">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="kicker">Beyond work</div>
+            <h2>The things that keep me inspired.</h2>
+          </div>
+          <p class="section-intro">
+            Some of my favorite moments happen with a camera in hand, a new place ahead,
+            or a trail disappearing into the distance.
+          </p>
+        </div>
+
+        <div class="passions-grid">
+          <article class="glass passion travel reveal">
+            <div class="passion-tag">✈ Travel</div>
+            <h3>New places, new perspectives.</h3>
+            <p>
+              Traveling helps me understand cultures, challenge routines, and see the world
+              from angles I could never find by staying in one place.
+            </p>
+          </article>
+
+          <article class="glass passion photo reveal">
+            <div class="passion-tag">📷 Photography</div>
+            <h3>Stories in a frame.</h3>
+            <p>
+              I enjoy noticing the moments people rush past — light, landscapes,
+              architecture, emotions, and the details that make a place memorable.
+            </p>
+          </article>
+
+          <article class="glass passion hike reveal">
+            <div class="passion-tag">🥾 Hiking</div>
+            <h3>Growth is rarely a straight line.</h3>
+            <p>
+              Hiking is my reminder that progress is built step by step — and that
+              the best views often require a little effort.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="glass quote reveal">
+          <p>“I believe the most interesting life is one where ambition and curiosity grow together.”</p>
+          <small>— Jenny Robayo</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="glass contact-wrap reveal">
+          <div>
+            <div class="kicker">Let’s connect</div>
+            <h2>Always open to a meaningful conversation.</h2>
+            <p>
+              Whether it’s about business, innovation, travel, photography, a great hiking trail,
+              or an opportunity to build something valuable, I enjoy connecting with people who
+              are curious about what comes next.
+            </p>
+            <div class="contact-badges">
+              <span class="badge">Industrial Engineering</span>
+              <span class="badge">Business</span>
+              <span class="badge">Strategy</span>
+              <span class="badge">Travel</span>
+              <span class="badge">Photography</span>
+            </div>
+          </div>
+          <a class="btn primary" href="mailto:your-email@example.com">Say hello →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <span>© <span id="year"></span> Jenny Robayo</span>
+    <span>Designed with curiosity, Colombian roots & a global perspective.</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((el, index) => {
+      el.style.transitionDelay = `${Math.min(index % 4, 3) * 80}ms`;
+      revealObserver.observe(el);
+    });
+
+    const links = [...document.querySelectorAll(".nav-links a[href^='#']")];
+    const sections = links
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          links.forEach(a => a.style.color = "");
+          const active = links.find(a => a.getAttribute("href") === `#${entry.target.id}`);
+          if(active && !active.classList.contains("nav-cta")) active.style.color = "#fff";
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+
+    sections.forEach(section => spy.observe(section));
+  </script>
+</body>
+</html>
